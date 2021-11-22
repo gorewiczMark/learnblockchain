@@ -2,14 +2,18 @@ package main
 
 import (
 	"fmt"
+
 	"strconv"
 
 	"github.com/gorewiczMark/learnblockchain/blockchain"
+
 )
 
 func main() {
 
+
 	chain := blockchain.InitBlockChain()
+
 
 	chain.AddBlock("first block after genesis")
 	chain.AddBlock("second block afrer genesis")
@@ -23,5 +27,6 @@ func main() {
 		pow := blockchain.NewProofOfWork(block)
 		fmt.Printf("Pow: %s\n", strconv.FormatBool(pow.Validate()))
 		fmt.Println()
+
 	}
 }
