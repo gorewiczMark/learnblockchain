@@ -38,7 +38,7 @@ func (p *ProofOfWork) Run() (int, []byte) {
 
 	for nonce < math.MaxInt64 {
 		data := p.InitNonce(nonce)
-		hash := sha256.Sum256(data)
+		hash = sha256.Sum256(data)
 
 		fmt.Printf("\r%x", hash)
 		intHash.SetBytes(hash[:])
