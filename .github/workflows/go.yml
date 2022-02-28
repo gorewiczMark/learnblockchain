@@ -20,12 +20,8 @@ jobs:
 
     - name: Build
       run: go build -v ./...
-
-    - name: Build test list
-      run: CVPKG=$(go list ./... | grep -v "_test")
-      
-    - name: echo
-      run: echo $CVPKG
-      
+    
     - name: Test
-      run: go test -v -coverpkg $CVPKG ./...
+      run: |
+        CVPKG=$(go list ./... | grep -v "_test")CVPKG=$(go list ./... | grep -v "_test")
+        go test -v -coverpkg $CVPKG ./...
