@@ -23,5 +23,5 @@ jobs:
     
     - name: Test
       run: |
-        CVPKG=$(go list ./... | grep -v "_test")CVPKG=$(go list ./... | grep -v "_test")
+        CVPKG=$(go list ./... | grep -v "_test")
         go test -v -coverpkg $CVPKG ./...
