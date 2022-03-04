@@ -20,9 +20,6 @@ jobs:
 
     - name: Build
       run: go build -v ./...
-    
-    - name: Run
-      run: go run main.go
 
     - name: Build test list
       run: CVPKG=$(go list ./... | grep -v "_test")
