@@ -22,7 +22,7 @@ jobs:
       run: go build -v ./...
     
     - name: Run
-      run: ./learnblockchain
+      run: go run main.go
 
     - name: Build test list
       run: CVPKG=$(go list ./... | grep -v "_test")
