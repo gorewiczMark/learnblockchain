@@ -17,11 +17,11 @@ type ProofOfWork struct {
 	Target *big.Int
 }
 
-func (p *ProofOfWork) InitNonce(nonce int) []byte {
+func (p *ProofOfWork) InitData(nonce int) []byte {
 	data := bytes.Join(
 		[][]byte{
 			p.Block.PrevHash,
-			p.Block.Data,
+			p.Block.HashTransactions(),
 			ToHex(int64(nonce)),
 			ToHex(int64(Difficulty)),
 		},
@@ -37,7 +37,7 @@ func (p *ProofOfWork) Run() (int, []byte) {
 	nonce := 0
 
 	for nonce < math.MaxInt64 {
-		data := p.InitNonce(nonce)
+		data := p.InitData(nonce)
 		hash = sha256.Sum256(data)
 
 		fmt.Printf("\r%x", hash)
@@ -57,7 +57,7 @@ func (p *ProofOfWork) Run() (int, []byte) {
 func (p *ProofOfWork) Validate() bool {
 	var intHash big.Int
 
-	data := p.InitNonce(p.Block.Nonce)
+	data := p.InitData(p.Block.Nonce)
 
 	hash := sha256.Sum256(data)
 	intHash.SetBytes(hash[:])
