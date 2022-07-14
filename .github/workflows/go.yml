@@ -1,14 +1,11 @@
 name: Go
 
 on:
-  push:
-    branches:
-      -test
-
   pull_request:
     branches: 
       -main
       -test
+  push:
 
 jobs:
 
