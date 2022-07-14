@@ -10,6 +10,7 @@ import (
 	"github.com/gorewiczMark/learnblockchain/blockchain"
 )
 
+// Type commandline
 type CommandLine struct {
 	blockchain *blockchain.BlockChain
 }
