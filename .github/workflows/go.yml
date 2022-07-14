@@ -35,4 +35,8 @@ jobs:
       - name: Echo
         run: |
           echo "This is a pull request" \
-          cat $GITHUB_EVENT_PATH
+      - name: artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: "testing"
+          path: ${{ github.event_path }}
