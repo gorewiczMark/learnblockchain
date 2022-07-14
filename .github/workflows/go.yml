@@ -35,4 +35,4 @@ jobs:
       - name: Echo
         run: |
           echo "This is a pull request" \
-          cat ${{ GITHUB_EVENT_PATH }}
+          cat $GITHUB_EVENT_PATH
