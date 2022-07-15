@@ -3,9 +3,7 @@ name: Go
 on:
   pull_request:
     types: [ labeled ]
-    branches: 
-      - main
-      - test
+
   push:
 
 jobs:
