@@ -2,7 +2,7 @@ name: Go
 
 on:
   workflow_dispatch:
-
+  push:
 jobs:
 
   build:
@@ -15,10 +15,16 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.17
-    - name: actor
+    - name: set actor
+      if: ${{ github.event_name == 'push' }}
       run: |
-       echo ${{ github.actor }} \
-       echo ${{ github.event.pusher.name }} \
-       echo ${{ github.event.actor.display_login }} 
-      
-   
+        touch a.txt
+        git config user.email "no@no.no"
+        git config user.name "Human - automated testing"
+        git add .
+        git status
+        git commit -m "this is a test commit"
+        git push
+    - name: actor
+      run: echo ${{ github.actor }}
+
