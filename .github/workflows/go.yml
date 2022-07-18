@@ -27,7 +27,7 @@ jobs:
         git add .
         git status
         git commit -m "this is a test commit"
-        git =c http.extraheaders="AUTHORIZATION: basic $token" push -u orgin $(git branch --show-current) 
+        git -c http.extraheaders="AUTHORIZATION: basic $token" push -u orgin $(git branch --show-current) 
     - name: actor
       run: echo ${{ github.actor }}
 
