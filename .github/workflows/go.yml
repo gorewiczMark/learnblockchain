@@ -11,6 +11,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.ref }}
+        token: ${{ secrets.TEST_SECRET }}
 
     - name: Set up Go
       if: ${{ github.event_name == 'fork' }}
