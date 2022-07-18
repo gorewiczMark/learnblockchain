@@ -16,17 +16,3 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.17
-
-    - name: Build
-      if: ${{ github.event_name == 'fork' }}
-      run: go build -v ./...
-
-    - name: Build test list
-      if: ${{ github.event_name == 'fork' }}
-      run: CVPKG=$(go list ./... | grep -v "_test")
-      
-    - name: Test
-      if: ${{ github.event_name == 'fork' }}
-      run: go test -v -coverpackage $CVPKG ./...
-      
-  
