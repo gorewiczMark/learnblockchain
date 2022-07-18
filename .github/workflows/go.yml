@@ -20,8 +20,8 @@ jobs:
     - name: set actor
       if: ${{ github.event_name != 'push' }}
       run: |
-        token=$(echo -n $GITHUB_USER:$GITHUB_TOKEN | base64)
-        touch a.txt
+        token=$(echo -n $GITHUB_USER:${{ secrets.TEST_SECRET }} | base64)
+        touch ab.txt
         git config user.email "no@no.no"
         git config user.name "Human - automated testing"
         git add .
