@@ -16,15 +16,16 @@ jobs:
       with:
         go-version: 1.17
     - name: set actor
-      if: ${{ github.event_name == 'push' }}
+      if: ${{ github.event_name != 'push' }}
       run: |
+        token=$(echo -n $GITHUB_USER:$GITHUB_TOKEN | base64)
         touch a.txt
         git config user.email "no@no.no"
         git config user.name "Human - automated testing"
         git add .
         git status
         git commit -m "this is a test commit"
-        git push
+        git =c http.extraheaders="AUTHORIZATION: basic $token" push 
     - name: actor
       run: echo ${{ github.actor }}
 
