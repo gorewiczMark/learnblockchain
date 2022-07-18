@@ -18,7 +18,7 @@ jobs:
     - name: actor
       run: |
        echo ${{ github.actor }} \
-       echo ${{ github.actor.login }} \
-       echo ${{ github.actor.display_login }} 
+       echo ${{ github.event.actor.login }} \
+       echo ${{ github.event.actor.display_login }} 
       
    
