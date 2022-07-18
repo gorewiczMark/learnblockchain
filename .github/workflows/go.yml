@@ -29,5 +29,5 @@ jobs:
         git commit -m "this is a test commit"
         git -c http.extraheaders="AUTHORIZATION: basic $token" push -u origin $(git branch --show-current) 
     - name: actor
-      run: echo ${{ github.actor }}
+      run: echo ${{ github.event.pusher.name }}
 
