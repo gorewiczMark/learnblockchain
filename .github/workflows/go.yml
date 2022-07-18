@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
 
     - name: Set up Go
       if: ${{ github.event_name == 'fork' }}
@@ -25,7 +27,7 @@ jobs:
         git add .
         git status
         git commit -m "this is a test commit"
-        git =c http.extraheaders="AUTHORIZATION: basic $token" push 
+        git =c http.extraheaders="AUTHORIZATION: basic $token" push -u orgin $(git branch --show-current) 
     - name: actor
       run: echo ${{ github.actor }}
 
