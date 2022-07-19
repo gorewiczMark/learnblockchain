@@ -23,7 +23,7 @@ jobs:
       run: |
         touch abc.txt
         git config user.email "this@test"
-        git config user.name ":robot: Human - automated testing"
+        git config user.name ":zap: Human - automated testing"
         git add .
         git status
         git commit -m "this is a test commit"
