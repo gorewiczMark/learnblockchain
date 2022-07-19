@@ -29,6 +29,6 @@ jobs:
         git commit -m "this is a test commit"
         git push -u origin $(git branch --show-current) 
     - name: actor
-      if: ${{ github.event.head_commit.author.name == "Human - automated testing"}}
+      if: ${{ github.event.head_commit.author.name == 'Human - automated testing'}}
       run: echo "Success"
 
