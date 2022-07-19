@@ -21,13 +21,12 @@ jobs:
     - name: set actor
       if: ${{ github.event_name != 'push' }}
       run: |
-        token=$(echo -n $GITHUB_USER:${{ secrets.TEST_SECRET }} | base64)
         touch abc.txt
         git config user.name "Human - automated testing"
         git add .
         git status
         git commit -m "this is a test commit"
-        git -c http.extraheaders="AUTHORIZATION: basic $token" push -u origin $(git branch --show-current) 
+        git push -u origin $(git branch --show-current) 
     - name: actor
       run: echo ${{ github.event.pusher.name }}
 
