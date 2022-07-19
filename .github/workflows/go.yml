@@ -22,11 +22,12 @@ jobs:
       if: ${{ github.event_name != 'push' }}
       run: |
         touch abc.txt
+        git config user.email "this@test"
         git config user.name "Human - automated testing"
         git add .
         git status
         git commit -m "this is a test commit"
         git push -u origin $(git branch --show-current) 
     - name: actor
-      run: echo ${{ github.event.pusher.name }}
+      run: echo ${{ github.event.pusher.email }}
 
