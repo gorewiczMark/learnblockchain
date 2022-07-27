@@ -3,8 +3,10 @@ name: Go
 on:
   workflow_dispatch:
   push:
+  
+env:
+  SKIP: false
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -29,9 +31,12 @@ jobs:
         git status
         git commit -m "this is a test commit [automation]"
         git push -u origin $(git branch --show-current) 
+        SKIP=true
     - name: actor
       if: "${{ contains(github.event.head_commit.message, '[automation]') }}"
-      run: echo "Success"
+      run: |
+        echo "Success"
+        echo $SKIP
     - name: dd
       run: echo ${{ github.event.head_commit.author.name }}
 
