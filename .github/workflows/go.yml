@@ -31,12 +31,11 @@ jobs:
         git status
         git commit -m "this is a test commit [automation]"
         git push -u origin $(git branch --show-current) 
-        SKIP=true
     - name: actor
       if: "${{ contains(github.event.head_commit.message, '[automation]') }}"
       run: |
         echo "Success"
         echo $SKIP
     - name: dd
-      run: echo ${{ github.event.head_commit.author.name }}
+      run: SKIP=true
 
