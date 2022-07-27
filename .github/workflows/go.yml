@@ -22,6 +22,7 @@ jobs:
       if: ${{ github.event_name != 'push' }}
       run: |
         touch abc.txt
+        echo a >> abc.txt
         git config user.email "this@test"
         git config user.name ":zap: Human - automated testing"
         git add .
