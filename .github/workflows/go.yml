@@ -37,5 +37,5 @@ jobs:
         echo "Success"
         echo $SKIP
     - name: dd
-      run: SKIP=true
+      run: echo $SKIP
 
