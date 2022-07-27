@@ -29,7 +29,7 @@ jobs:
         git commit -m "this is a test commit [automation]"
         git push -u origin $(git branch --show-current) 
     - name: actor
-      if: "${{ contains(github.event.headcommit.message, '[automation]') }}"
+      if: "${{ contains(github.event.head_commit.message, '[automation]') }}"
       run: echo "Success"
     - name: dd
       run: echo ${{ github.event.head_commit.author.name }}
