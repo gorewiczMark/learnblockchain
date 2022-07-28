@@ -23,7 +23,7 @@ jobs:
         if: contains(github.event.pull_request.labels.*.name, 'auto')
         run: echo "::set-output name=test::true"
       - name: echo
-        if: ${{ steps.vault.output.test }}
+        if: ${{ steps.vault.output.test }} == true
         run: echo sucess
       - name: artifact
         uses: actions/upload-artifact@v2
