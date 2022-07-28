@@ -12,7 +12,12 @@ jobs:
     steps: 
       - name: Echo
         run: |
-          echo "This is a pull request" \
+          echo "This is a pull request" 
+          curl \
+          -H "Accept: application/vnd.github+json" \ 
+          -H "Authorization: token $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.REPOSITORY }}/issues/${{ github.event.number }}/labels \
+          -d '{"labels":["bug"]}'
       - name: artifact
         uses: actions/upload-artifact@v2
         with:
