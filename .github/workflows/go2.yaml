@@ -21,7 +21,7 @@ jobs:
       - name: check
         id: check
         if: contains(github.event.pull_request.labels.*.name, 'auto')
-        run: echo "::set-output test=true"
+        run: echo "::set-output name=test::true"
       - name: echo
         if: ${{ steps.vault.output.test }}
         run: echo sucess
