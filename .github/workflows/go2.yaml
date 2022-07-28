@@ -19,7 +19,7 @@ jobs:
           curl -X DELETE -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.TEST_SECRET }}" \
           "https://api.github.com/repos/${{ github.REPOSITORY }}/issues/${{ github.event.number }}/labels/bug"
       - name: Echo present
-        if: contains(github.event.issue.labels.*.name, 'auto')
+        if: contains(github.event.pull_request.labels.*.name, 'auto')
         run: echo Present
       - name: artifact
         uses: actions/upload-artifact@v2
