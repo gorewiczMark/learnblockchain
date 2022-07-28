@@ -20,7 +20,7 @@ jobs:
           "https://api.github.com/repos/${{ github.REPOSITORY }}/issues/${{ github.event.number }}/labels/bug"
       - name: check
         id: check
-        if: contains(github.event.pull_request.labels.*.name, 'bug')
+        if: contains(github.event.pull_request.labels.*.name, 'auto')
         run: echo "::set-output name=test::true"
       - name: echo
         if: ${{ steps.vault.output.test }} == false
