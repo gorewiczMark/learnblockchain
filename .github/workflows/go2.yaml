@@ -20,10 +20,10 @@ jobs:
           "https://api.github.com/repos/${{ github.REPOSITORY }}/issues/${{ github.event.number }}/labels/bug"
       - name: check
         id: check
-        if: contains(github.event.pull_request.labels.*.name, 'auto')
+        if: contains(github.event.pull_request.labels.*.name, 'bug')
         run: echo "::set-output name=test::true"
       - name: echo
-        if: steps.vault.outputs.test == 'false'
+        if: steps.vault.outputs.test == 'true'
         run: echo sucess
       - name: artifact
         uses: actions/upload-artifact@v2
