@@ -13,7 +13,9 @@ jobs:
       - name: Echo
         run: |
           echo "This is a pull request" 
-          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.TEST_SECRET }}" https://api.github.com/repos/gorewiczMark/learnblockchain/issues/10/labels -d '{"labels":["bug"]}'
+          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.TEST_SECRET }}" \
+          https://api.github.com/repos/gorewiczMark/learnblockchain/issues/10/labels \
+          -d '{"labels":["auto"]}'
       - name: artifact
         uses: actions/upload-artifact@v2
         with:
