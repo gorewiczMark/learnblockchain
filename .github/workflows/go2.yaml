@@ -23,7 +23,7 @@ jobs:
         if: contains(github.event.pull_request.labels.*.name, 'bug')
         run: echo "::set-output name=test::true"
       - name: echo
-        if: steps.check.outputs.test 
+        if: steps.check.outputs.test != 'true' 
         run: echo sucess
       - name: artifact
         uses: actions/upload-artifact@v2
