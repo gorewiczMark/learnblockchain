@@ -21,9 +21,9 @@ jobs:
       - name: check
         id: check
         if: contains(github.event.pull_request.labels.*.name, 'auto')
-        run: echo "::set-output name=test::true"
+        run: echo "::set-output name=test::check"
       - name: echo
-        if: steps.vault.outputs.test 
+        if: steps.vault.outputs.test == 'check'
         run: echo sucess
       - name: artifact
         uses: actions/upload-artifact@v2
