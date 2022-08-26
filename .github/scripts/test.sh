@@ -5,7 +5,7 @@ type=$GITHUB_EVENT_NAME
 file=$GITHUB_EVENT_PATH
 if [ $type == "pull_request" ]; then
   echo $GITHUB_EVENT.NUMBER
-  num=$(cat $file | jr -r .pull_request.changed_files)
+  num=$(cat $file | jq -r .pull_request.changed_files)
   echo $num
   if [ $num > 1 ]; then
     echo fail
