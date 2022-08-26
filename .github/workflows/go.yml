@@ -1,0 +1,21 @@
+name: Go
+
+on:
+  push:
+
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Testing
+        run: |
+          chmod -R +x ./.github/scripts
+          echo ${{ github.event.before }}
+          ./.github/scripts/test.sh
+    
