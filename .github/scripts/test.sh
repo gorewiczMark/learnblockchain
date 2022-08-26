@@ -4,10 +4,11 @@ echo $GITHUB_REPOSITORY
 type=$GITHUB_EVENT_NAME
 file=$GITHUB_EVENT_PATH
 if [ $type == "pull_request" ]; then
-  echo $GITHUB_EVENT.NUMBER
   num=$(cat $file | jq -r .pull_request.changed_files)
   echo $num
-  if [ $num > 1 ]; then
+  if [ $num = 11 ]; then
+    echo pass
+  else
     echo fail
   fi
 fi
