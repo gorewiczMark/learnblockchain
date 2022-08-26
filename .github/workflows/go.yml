@@ -16,5 +16,6 @@ jobs:
       - name: Testing
         run: |
           chmod -R +x ./.github/scripts
+          echo ${{ github.event.before }}
           ./.github/scripts/test.sh
     
