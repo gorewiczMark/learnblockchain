@@ -1,0 +1,32 @@
+name: Go2
+
+on:
+  pull_request:
+   #types: [ labeled ]
+  
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps: 
+      - name: Echo
+        run: |
+          echo "This is a pull request" 
+          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.TEST_SECRET }}" \
+          "https://api.github.com/repos/${{ github.REPOSITORY }}/issues/${{ github.event.number }}/labels" \
+          -d '{"labels":["auto"]}'
+          curl -X DELETE -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.TEST_SECRET }}" \
+          "https://api.github.com/repos/${{ github.REPOSITORY }}/issues/${{ github.event.number }}/labels/bug"
+      - name: check
+        id: check
+        if: contains(github.event.pull_request.labels.*.name, 'bug')
+        run: echo "::set-output name=test::true"
+      - name: echo
+        if: steps.check.outputs.test != 'true' 
+        run: echo sucess
+      - name: artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: "testing"
+          path: ${{ github.event_path }}
